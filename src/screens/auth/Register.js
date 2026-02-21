@@ -1,3 +1,14 @@
+// import { Text, View } from 'react-native';
+
+// const Register = () => {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text style={{ fontSize: 20 }}>Register</Text>
+//     </View>
+//   );
+// };
+
+// export default Register;
 import { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -91,18 +102,11 @@ const Login = () => {
         </TouchableOpacity>
 
         <CustomButton
-          label="LOGIN"
+          label="REGISTER"
           onPress={handleLogin}
           containerStyle={styles.button}
           textStyle={styles.buttonText}
         />
-
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate(ROUTES.REGISTER)}>
-            <Text style={styles.footerLink}>Sign up</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </View>
   );
@@ -142,7 +146,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
   },
 
-  // logo
+  //logo
   logoContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -152,7 +156,7 @@ const styles = StyleSheet.create({
     height: 130,
   },
 
-  // bubbles
+  //bubbles
   bubble: {
     position: 'absolute',
     borderRadius: 999,
@@ -180,7 +184,7 @@ const styles = StyleSheet.create({
     opacity: 0.25,
   },
 
-  //white card
+  // white card
   card: {
     flex: 1,
     backgroundColor: '#FFFFFF',
@@ -223,7 +227,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: '#074b13',
     borderRadius: 50,
-    height: 35,
+    height: 38,
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
