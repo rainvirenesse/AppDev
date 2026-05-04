@@ -1,59 +1,37 @@
-// // import { Text, View } from 'react-native';
-// import { Dimensions, Text, View } from 'react-native';
-// import { TextInput } from 'react-native-gesture-handler';
-
-// const CustomTextInput = ({
-//   placeholder,
-//   label,
-//   labelStyle,
-//   value,
-//   containerStyle,
-//   textStyle,
-// }) => {
-//   const { width, height } = Dimensions.get('window');
-
-//   return (
-//     <View style={containerStyle}>
-//       <Text style={labelStyle}>{label}</Text>
-//       <TextInput
-//         placeholder={placeholder}
-//         onChangeText={value}
-//         style={[
-//           textStyle,
-//           {
-//             // width: '80%',
-//             width: width * 0.5,
-//             borderBottomWidth: 1,
-//           },
-//         ]}
-//       />
-//     </View>
-//   );
-// };
-
-// export default CustomTextInput;
-
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TextInputProps, View, TextStyle, ViewStyle } from 'react-native';
 
 const CustomTextInput = ({
-  placeholder,
-  label,
-  labelStyle,
-  value,
-  containerStyle,
-  textStyle,
-  secureTextEntry,
-  keyboardType,
-  autoCapitalize,
+  placeholder = '',
+  label = '',
+  labelStyle = {},
+  value = '',
+  onChangeText = () => {},
+  containerStyle = {},
+  textStyle = {},
+  secureTextEntry = false,
+  keyboardType = 'default',
+  autoCapitalize = 'sentences',
+  }: {
+  placeholder?: string;
+  label?: string;
+  labelStyle?: TextStyle;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  containerStyle?: ViewStyle;
+  textStyle?: TextStyle;
+  secureTextEntry?: boolean;
+  keyboardType?: TextInputProps['keyboardType'];
+  autoCapitalize?: TextInputProps['autoCapitalize'];
 }) => {
   return (
     <View style={[styles.wrapper, containerStyle]}>
       <Text style={[styles.label, labelStyle]}>{label}</Text>
       <View style={styles.inputBox}>
         <TextInput
+          value={value}
+          onChangeText={onChangeText}
           placeholder={placeholder}
           placeholderTextColor="#C4A8B0"
-          onChangeText={value}
           secureTextEntry={secureTextEntry}
           keyboardType={keyboardType}
           autoCapitalize={autoCapitalize}

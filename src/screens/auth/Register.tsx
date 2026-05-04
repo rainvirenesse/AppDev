@@ -1,4 +1,15 @@
-import { useState } from 'react';
+// import { Text, View } from 'react-native';
+
+// const Register = () => {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text style={{ fontSize: 20 }}>Register</Text>
+//     </View>
+//   );
+// };
+
+// export default Register;
+import React, { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,13 +18,13 @@ import CustomTextInput from '../../components/CustomTextInput';
 import { ROUTES } from '../../utils';
 import { IMAGES } from '../../utils/image';
 
-const Login = () => {
+const Register: React.FC = () => {
   const [emailAdd, setEmailAdd] = useState('');
   const [password, setPassword] = useState('');
 
   const navigation = useNavigation();
 
-  const handleLogin = () => {
+  const handleRegister = () => {
     // Check empty fields
     if (emailAdd === '' || password === '') {
       Alert.alert('Missing Fields', 'Please fill in all fields.');
@@ -34,7 +45,7 @@ const Login = () => {
     }
 
     // All good
-    navigation.navigate(ROUTES.HOME);
+    navigation.navigate(ROUTES.HOME as never);
   };
 
   return (
@@ -42,9 +53,9 @@ const Login = () => {
 
       {/* ── Red Header ── */}
       <View style={styles.header}>
-        <View style={[styles.bubble, styles.bubbleLarge]} />
+        {/* <View style={[styles.bubble, styles.bubbleLarge]} />
         <View style={[styles.bubble, styles.bubbleMedium]} />
-        <View style={[styles.bubble, styles.bubbleSmall]} />
+        <View style={[styles.bubble, styles.bubbleSmall]} /> */}
 
         <View style={styles.menuDots}>
           <View style={styles.dot} />
@@ -68,7 +79,8 @@ const Login = () => {
         <CustomTextInput
           label="Email Address"
           placeholder="example@gmail.com"
-          value={val => setEmailAdd(val)}
+          value={emailAdd}
+          onChangeText={setEmailAdd}
           keyboardType="email-address"
           autoCapitalize="none"
           containerStyle={styles.inputContainer}
@@ -79,7 +91,8 @@ const Login = () => {
         <CustomTextInput
           label="Password"
           placeholder="••••••••••"
-          value={val => setPassword(val)}
+          value={password}
+          onChangeText={setPassword}
           secureTextEntry
           containerStyle={styles.inputContainer}
           labelStyle={styles.inputLabel}
@@ -91,35 +104,28 @@ const Login = () => {
         </TouchableOpacity>
 
         <CustomButton
-          label="LOGIN"
-          onPress={handleLogin}
+          label="REGISTER"
+          onPress={handleRegister}
           containerStyle={styles.button}
           textStyle={styles.buttonText}
         />
-
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate(ROUTES.REGISTER)}>
-            <Text style={styles.footerLink}>Sign up</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </View>
   );
 };
 
-export default Login;
+export default Register;
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#072110',
+    backgroundColor: '#35051d',
   },
 
   // header
   header: {
     height: '35%',
-    backgroundColor: '#072110',
+    // backgroundColor: '#072110',
     paddingHorizontal: 28,
     paddingTop: 60,
     paddingBottom: 28,
@@ -142,7 +148,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
   },
 
-  // logo
+  //logo
   logoContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -152,35 +158,35 @@ const styles = StyleSheet.create({
     height: 130,
   },
 
-  // bubbles
-  bubble: {
-    position: 'absolute',
-    borderRadius: 999,
-    backgroundColor: '#71a76ba5',
-  },
-  bubbleLarge: {
-    width: 160,
-    height: 160,
-    top: -50,
-    right: -40,
-    opacity: 0.6,
-  },
-  bubbleMedium: {
-    width: 100,
-    height: 100,
-    top: 50,
-    right: 70,
-    opacity: 0.35,
-  },
-  bubbleSmall: {
-    width: 65,
-    height: 65,
-    bottom: 10,
-    right: 10,
-    opacity: 0.25,
-  },
+  //bubbles
+  // bubble: {
+  //   position: 'absolute',
+  //   borderRadius: 999,
+  //   backgroundColor: '#71a76ba5',
+  // },
+  // bubbleLarge: {
+  //   width: 160,
+  //   height: 160,
+  //   top: -50,
+  //   right: -40,
+  //   opacity: 0.6,
+  // },
+  // bubbleMedium: {
+  //   width: 100,
+  //   height: 100,
+  //   top: 50,
+  //   right: 70,
+  //   opacity: 0.35,
+  // },
+  // bubbleSmall: {
+  //   width: 65,
+  //   height: 65,
+  //   bottom: 10,
+  //   right: 10,
+  //   opacity: 0.25,
+  // },
 
-  //white card
+  // white card
   card: {
     flex: 1,
     backgroundColor: '#FFFFFF',
@@ -221,9 +227,9 @@ const styles = StyleSheet.create({
     marginTop: 24,
     width: '38%',
     alignSelf: 'center',
-    backgroundColor: '#074b13',
+    backgroundColor: '#35051d',
     borderRadius: 50,
-    height: 35,
+    height: 38,
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
