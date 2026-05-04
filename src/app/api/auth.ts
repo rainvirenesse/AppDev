@@ -1,6 +1,6 @@
 import { LoginCredentials, LoginResponse } from '../../types/api.types';
 
-const BASE_URL = 'http://192.168.1.10:8000/api';
+const BASE_URL = 'http://192.168.1.31:8000/api';
 const options = {
   headers: {
     Accept: 'application/json',
@@ -61,3 +61,36 @@ export async function authLogin({ email, password }: LoginCredentials) {
 //     throw new Error(data.message || 'Profile fetch failed');
 //   }
 // }
+interface UserGoogleLoginPayload {
+  idToken: string;
+}
+
+interface UserGoogleLoginResponse {
+  token?: string;
+  error?: string;
+}
+
+export async function userGoogleLogin(
+  payload: UserGoogleLoginPayload
+): Promise<UserGoogleLoginResponse> {
+  const { idToken } = payload;
+
+  try {
+    const response = await fetch(BASE_URL + '/auth/google/mobile', {
+      method: 'POST',
+      ...options,
+      body: JSON.stringify({ idToken }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return { error: data.message || 'Login failed' };
+    }
+
+    return data;
+
+  } catch (error: any) {
+    return { error: error.message || 'An unknown error occurred' };
+  }
+}

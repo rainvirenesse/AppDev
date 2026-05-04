@@ -1,21 +1,33 @@
 import {
-  USER_LOGIN,
   USER_LOGIN_COMPLETED,
   USER_LOGIN_ERROR,
   USER_LOGIN_REQUEST,
   USER_LOGIN_RESET,
 } from '../actions';
+import { LoginResponse } from '../../types/api.types';
 
-// export default function reducer(state = {}, action) {
-const INITIAL_STATE = {
+interface AuthState {
+  data: LoginResponse | null;
+  isLoading: boolean;
+  isError: boolean;
+  errorMessage: string | null;
+  registeredUsers: LoginResponse[];
+}
+
+interface AuthAction {
+  type: string;
+  payload?: LoginResponse | string;
+}
+
+const INITIAL_STATE: AuthState = {
   data: null,
   isLoading: false,
   isError: false,
   errorMessage: null,
-  registeredUsers: [], //added 
+  registeredUsers: [],
 };
 
-export default function reducer(state = INITIAL_STATE, action) {
+export default function reducer(state = INITIAL_STATE, action: AuthAction): AuthState {
   console.log(action.type);
   switch (action.type) {
     case USER_LOGIN_REQUEST:
@@ -30,37 +42,24 @@ export default function reducer(state = INITIAL_STATE, action) {
     case USER_LOGIN_COMPLETED:
       return {
         ...state,
-        data: action.payload,
+        data: action.payload as LoginResponse,
         isLoading: false,
         isError: false,
       };
+
     case USER_LOGIN_ERROR:
       return {
         ...state,
         data: null,
         isLoading: false,
         isError: true,
-        errorMessage: action.payload,
+        errorMessage: action.payload as string,
       };
+
     case USER_LOGIN_RESET:
-        return INITIAL_STATE;
+      return INITIAL_STATE;
 
     default:
       return state;
-    //   return {
-    //     ...state,
-    //     data: null,
-    //     isLoading: false,
-    //     isError: false,
-    //   };
   }
 }
-// export const userLogin = payload => ({
-//   type: USER_LOGIN,
-//   payload,
-// });
-
-
-// export const resetLogin = () => ({
-//   type: USER_LOGIN_RESET
-// });
