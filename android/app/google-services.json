@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "860169035588",
+    "project_id": "appdev-9031a",
+    "storage_bucket": "appdev-9031a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860169035588:android:3d0f930b383602229b4111",
+        "android_client_info": {
+          "package_name": "com.credo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860169035588-khejo2nb1ksbs5rsp5s355mtfatfg1vb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.credo",
+            "certificate_hash": "478d325aa27dee8905af1d0fae3eceefe21332af"
+          }
+        },
+        {
+          "client_id": "860169035588-pnui8nmbvno853fn3pnk1419f2rfbepo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1OnEVfHmLJTpPXHYoVrfxNtBG24Hb2TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860169035588-pnui8nmbvno853fn3pnk1419f2rfbepo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
