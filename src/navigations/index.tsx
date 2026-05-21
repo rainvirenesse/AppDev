@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { useEffect } from 'react';
 import { Platform, StatusBar, useColorScheme } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { restoreAuth } from '../app/actions';
 import { LoginResponse } from '../types/api.types';
 import AuthNav from './AuthNav';
 import MainNav from './MainNav';
@@ -17,7 +18,12 @@ interface RootState {
 
 export default () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const dispatch = useDispatch();
   const { data } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    dispatch(restoreAuth());
+  }, [dispatch]);
 
   useEffect(() => {
     if (Platform.OS === 'android') {

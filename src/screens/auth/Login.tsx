@@ -14,7 +14,7 @@ import { userLogin } from '../../app/actions';
 
 import { GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import { _signInWithGoogle } from '../../utils/firebase';
-import { userGoogleLogin } from '../../app/api/auth';
+import { googleLogin } from '../../api/auth';
 import { USER_LOGIN_COMPLETED } from '../../app/actions';
 
 // const Login = () => {
@@ -89,7 +89,7 @@ const handleGoogleSignIn = async () => {
       return;
     }
 
-    const data = await userGoogleLogin({ idToken });
+    const data = await googleLogin({ idToken });
     console.log('Google login response:', JSON.stringify(data));
 
     if (data.error) {

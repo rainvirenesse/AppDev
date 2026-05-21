@@ -2,14 +2,12 @@ import  { useNavigation } from '@react-navigation/native';
 import { ROUTES } from '../utils';
 import React from 'react';
 import {
-  Alert,
   Image,
   StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 // import { resetLogin } from '../app/reducers/auth';
@@ -47,6 +45,20 @@ const HomeScreen: React.FC = () => {
           <Text style={styles.btnPrimaryText}>Get Started</Text>
         </TouchableOpacity> */}
 
+        <CustomCom
+          label="Shop Now"
+          onPress={() => navigation.navigate(ROUTES.PRODUCTS as never)}
+          loading={false}
+        />
+
+        <TouchableOpacity
+          style={styles.btnSecondary}
+          activeOpacity={0.75}
+          onPress={() => navigation.navigate(ROUTES.PROFILE as never)}
+        >
+          <Text style={styles.btnSecondaryText}>My Account</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.btnSecondary}
           activeOpacity={0.75}
@@ -54,12 +66,6 @@ const HomeScreen: React.FC = () => {
         >
           <Text style={styles.btnSecondaryText}>Logout</Text>
         </TouchableOpacity>
-
-        <CustomCom
-          label="Shop Now"
-          onPress={() => Alert.alert('Products')}
-          loading={false}
-        />
       </View>
     </View>
   );
